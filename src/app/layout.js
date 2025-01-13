@@ -1,5 +1,12 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import "bootstrap/dist/css/bootstrap.css";
+import "leaflet/dist/leaflet.css";
+import "@fortawesome/fontawesome-svg-core/styles.css";
+import { config } from "@fortawesome/fontawesome-svg-core";
+
+// Disable auto-adding CSS since we are importing it manually
+config.autoAddCss = false;
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
