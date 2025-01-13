@@ -70,7 +70,11 @@ const page = () => {
             totalSpace="20"
             bookedSpace="10"
             title="Kuningan Park Spot"
-            imageUrl="https://www.shutterstock.com/shutterstock/photos/1835092750/display_1500/stock-photo-a-city-crossing-with-a-semaphore-red-and-orange-light-in-semaphore-traffic-control-and-regulation-1835092750.jpg"
+            imageUrl={[
+              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRvSCJWYLxYetzZXOGhh0K6cG4AT_ZPKZHwWg&s",
+              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3FGH9XM6WKyaBmKHT8zUCYa7VzHkL758qlw&s",
+              "https://www.shutterstock.com/shutterstock/photos/1835092750/display_1500/stock-photo-a-city-crossing-with-a-semaphore-red-and-orange-light-in-semaphore-traffic-control-and-regulation-1835092750.jpg",
+            ]}
           />
         </div>
         <div className="col-md-4 border">
@@ -79,7 +83,11 @@ const page = () => {
             totalSpace="20"
             bookedSpace="10"
             title="Kuningan Park Spot"
-            imageUrl="https://www.shutterstock.com/shutterstock/photos/1835092750/display_1500/stock-photo-a-city-crossing-with-a-semaphore-red-and-orange-light-in-semaphore-traffic-control-and-regulation-1835092750.jpg"
+            imageUrl={[
+              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRvSCJWYLxYetzZXOGhh0K6cG4AT_ZPKZHwWg&s",
+              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3FGH9XM6WKyaBmKHT8zUCYa7VzHkL758qlw&s",
+              "https://www.shutterstock.com/shutterstock/photos/1835092750/display_1500/stock-photo-a-city-crossing-with-a-semaphore-red-and-orange-light-in-semaphore-traffic-control-and-regulation-1835092750.jpg",
+            ]}
           />
         </div>
         <div className="col-md-4 border">
@@ -88,7 +96,11 @@ const page = () => {
             totalSpace="20"
             bookedSpace="20"
             title="Kuningan Park Spot"
-            imageUrl="https://www.shutterstock.com/shutterstock/photos/1835092750/display_1500/stock-photo-a-city-crossing-with-a-semaphore-red-and-orange-light-in-semaphore-traffic-control-and-regulation-1835092750.jpg"
+            imageUrl={[
+              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRvSCJWYLxYetzZXOGhh0K6cG4AT_ZPKZHwWg&s",
+              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3FGH9XM6WKyaBmKHT8zUCYa7VzHkL758qlw&s",
+              "https://www.shutterstock.com/shutterstock/photos/1835092750/display_1500/stock-photo-a-city-crossing-with-a-semaphore-red-and-orange-light-in-semaphore-traffic-control-and-regulation-1835092750.jpg",
+            ]}
           />
         </div>
         <div className="col-md-4 border">
@@ -97,7 +109,11 @@ const page = () => {
             totalSpace="20"
             bookedSpace="20"
             title="Kuningan Park Spot"
-            imageUrl="https://www.shutterstock.com/shutterstock/photos/1835092750/display_1500/stock-photo-a-city-crossing-with-a-semaphore-red-and-orange-light-in-semaphore-traffic-control-and-regulation-1835092750.jpg"
+            imageUrl={[
+              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRvSCJWYLxYetzZXOGhh0K6cG4AT_ZPKZHwWg&s",
+              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3FGH9XM6WKyaBmKHT8zUCYa7VzHkL758qlw&s",
+              "https://www.shutterstock.com/shutterstock/photos/1835092750/display_1500/stock-photo-a-city-crossing-with-a-semaphore-red-and-orange-light-in-semaphore-traffic-control-and-regulation-1835092750.jpg",
+            ]}
           />
         </div>
       </div>
