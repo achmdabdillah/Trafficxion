@@ -98,7 +98,14 @@ export default function Home() {
             totalSpace="20"
             bookedSpace="10"
             title="Kuningan Park Spot"
-            imageUrl="https://www.shutterstock.com/shutterstock/photos/1835092750/display_1500/stock-photo-a-city-crossing-with-a-semaphore-red-and-orange-light-in-semaphore-traffic-control-and-regulation-1835092750.jpg"
+            openTime="07.00"
+            pricePerHour="5000"
+            closeTime="22.00"
+            publicTransportData={{ name: "Transjakarta", time: 420 }}
+            mapsUrl="https://maps.app.goo.gl/PbRzyNyfCN98BBNU8"
+            imageUrl={[
+              "https://www.shutterstock.com/shutterstock/photos/1835092750/display_1500/stock-photo-a-city-crossing-with-a-semaphore-red-and-orange-light-in-semaphore-traffic-control-and-regulation-1835092750.jpg",
+            ]}
           />
         </div>
         <div className="col-md-4 border">
@@ -107,7 +114,14 @@ export default function Home() {
             totalSpace="20"
             bookedSpace="10"
             title="Kuningan Park Spot"
-            imageUrl="https://www.shutterstock.com/shutterstock/photos/1835092750/display_1500/stock-photo-a-city-crossing-with-a-semaphore-red-and-orange-light-in-semaphore-traffic-control-and-regulation-1835092750.jpg"
+            openTime="07.00"
+            pricePerHour="5000"
+            closeTime="22.00"
+            publicTransportData={{ name: "Transjakarta", time: 420 }}
+            mapsUrl="https://maps.app.goo.gl/PbRzyNyfCN98BBNU8"
+            imageUrl={[
+              "https://www.shutterstock.com/shutterstock/photos/1835092750/display_1500/stock-photo-a-city-crossing-with-a-semaphore-red-and-orange-light-in-semaphore-traffic-control-and-regulation-1835092750.jpg",
+            ]}
           />
         </div>
         <div className="col-md-4 border">
@@ -116,7 +130,14 @@ export default function Home() {
             totalSpace="20"
             bookedSpace="20"
             title="Kuningan Park Spot"
-            imageUrl="https://www.shutterstock.com/shutterstock/photos/1835092750/display_1500/stock-photo-a-city-crossing-with-a-semaphore-red-and-orange-light-in-semaphore-traffic-control-and-regulation-1835092750.jpg"
+            openTime="07.00"
+            pricePerHour="5000"
+            closeTime="22.00"
+            publicTransportData={{ name: "Transjakarta", time: 420 }}
+            mapsUrl="https://maps.app.goo.gl/PbRzyNyfCN98BBNU8"
+            imageUrl={[
+              "https://www.shutterstock.com/shutterstock/photos/1835092750/display_1500/stock-photo-a-city-crossing-with-a-semaphore-red-and-orange-light-in-semaphore-traffic-control-and-regulation-1835092750.jpg",
+            ]}
           />
         </div>
       </div>

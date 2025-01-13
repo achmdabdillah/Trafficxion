@@ -70,6 +70,11 @@ const page = () => {
             totalSpace="20"
             bookedSpace="10"
             title="Kuningan Park Spot"
+            openTime="07.00"
+            pricePerHour="5000"
+            closeTime="22.00"
+            publicTransportData={{ name: "Transjakarta", time: 420 }}
+            mapsUrl="https://maps.app.goo.gl/PbRzyNyfCN98BBNU8"
             imageUrl={[
               "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRvSCJWYLxYetzZXOGhh0K6cG4AT_ZPKZHwWg&s",
               "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3FGH9XM6WKyaBmKHT8zUCYa7VzHkL758qlw&s",
@@ -83,6 +88,11 @@ const page = () => {
             totalSpace="20"
             bookedSpace="10"
             title="Kuningan Park Spot"
+            openTime="07.00"
+            pricePerHour="5000"
+            closeTime="22.00"
+            publicTransportData={{ name: "Transjakarta", time: 420 }}
+            mapsUrl="https://maps.app.goo.gl/PbRzyNyfCN98BBNU8"
             imageUrl={[
               "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRvSCJWYLxYetzZXOGhh0K6cG4AT_ZPKZHwWg&s",
               "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3FGH9XM6WKyaBmKHT8zUCYa7VzHkL758qlw&s",
@@ -96,6 +106,11 @@ const page = () => {
             totalSpace="20"
             bookedSpace="20"
             title="Kuningan Park Spot"
+            openTime="07.00"
+            pricePerHour="5000"
+            closeTime="22.00"
+            publicTransportData={{ name: "Transjakarta", time: 420 }}
+            mapsUrl="https://maps.app.goo.gl/PbRzyNyfCN98BBNU8"
             imageUrl={[
               "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRvSCJWYLxYetzZXOGhh0K6cG4AT_ZPKZHwWg&s",
               "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3FGH9XM6WKyaBmKHT8zUCYa7VzHkL758qlw&s",
@@ -109,6 +124,11 @@ const page = () => {
             totalSpace="20"
             bookedSpace="20"
             title="Kuningan Park Spot"
+            openTime="07.00"
+            pricePerHour="5000"
+            closeTime="22.00"
+            publicTransportData={{ name: "Transjakarta", time: 420 }}
+            mapsUrl="https://maps.app.goo.gl/PbRzyNyfCN98BBNU8"
             imageUrl={[
               "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRvSCJWYLxYetzZXOGhh0K6cG4AT_ZPKZHwWg&s",
               "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3FGH9XM6WKyaBmKHT8zUCYa7VzHkL758qlw&s",
