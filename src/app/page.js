@@ -41,7 +41,6 @@ export default function Home() {
         (position) => {
           // Extract latitude and longitude from position.coords
           const { latitude, longitude } = position.coords;
-          alert("oke");
           setUserLocation([latitude, longitude]);
           fetch(
             `https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}`
