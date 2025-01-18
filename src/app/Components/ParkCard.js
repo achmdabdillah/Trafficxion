@@ -81,7 +81,7 @@ const ParkCard = ({
         )}
         <div className="card-body">
           <div className="border d-flex align-content-between">
-            <div className="justify-center border my-auto">
+            <div className="justify-center my-auto">
               {type === "car" ? (
                 <FontAwesomeIcon icon={faCar} />
               ) : (
@@ -114,7 +114,7 @@ const ParkCard = ({
               </h5>
               <button
                 type="button"
-                className="close ms-auto border-0 bg-white"
+                className="close ms-auto-0 bg-white"
                 onClick={handleCloseModal}
                 aria-label="Close"
               >
@@ -165,8 +165,8 @@ const ParkCard = ({
                 </button>
               </div>
 
-              <div className="row my-2 border">
-                <div className="col-md-4 mb-3 d-flex justify-content-start align-items-center border">
+              <div className="row my-2">
+                <div className="col-md-4 mb-3 d-flex justify-content-start align-items-center">
                   <FontAwesomeIcon
                     className="border m-0 p-0"
                     icon={faLayerGroup}
@@ -179,17 +179,17 @@ const ParkCard = ({
                     {bookedSpace} / {totalSpace}{" "}
                   </p>
                 </div>
-                <div className="col-md-4 mb-3 d-flex justify-content-start align-items-center border">
+                <div className="col-md-4 mb-3 d-flex justify-content-start align-items-center">
                   <FontAwesomeIcon className="border m-0 p-0" icon={faClock} />
                   <p className="mb-0">
                     {openTime} / {closeTime}{" "}
                   </p>
                 </div>
-                <div className="col-md-4 mb-3 d-flex justify-content-start align-items-center border">
+                <div className="col-md-4 mb-3 d-flex justify-content-start align-items-center">
                   <strong>Rp </strong>
                   <p className="mb-0"> {pricePerHour} / Jam</p>
                 </div>
-                <div className="col-md-4 mb-3 d-flex justify-content-start align-items-center border">
+                <div className="col-md-4 mb-3 d-flex justify-content-start align-items-center">
                   <FontAwesomeIcon className="border m-0 p-0" icon={faBus} />
                   <p className="mb-0">
                     {convertSeconds(publicTransportData.time)} ke{" "}

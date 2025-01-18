@@ -1,16 +1,16 @@
 "use client";
 import Image from "next/image";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import Link from "next/link";
+
 // app/IconExample.js
 
 import Header from "./Components/Header";
 import NewsCard from "./Components/NewsCard";
 import ParkCard from "./Components/ParkCard";
 
-const OpenStreetMap = () => {
-  const position = [-6.223553715945312, 106.8259215730152]; // Example coordinates
-
+const OpenStreetMap = ({ position }) => {
   return (
     <MapContainer
       center={position}
@@ -32,41 +32,76 @@ const OpenStreetMap = () => {
 };
 
 export default function Home() {
+  const [userLocation, setUserLocation] = useState(null);
+  const [data, setData] = useState(null);
+
+  const getUserLocation = () => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          // Extract latitude and longitude from position.coords
+          const { latitude, longitude } = position.coords;
+          alert("oke");
+          setUserLocation([latitude, longitude]);
+          fetch(
+            `https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}`
+          )
+            .then((response) => response.json())
+            .then((json) => setData(json))
+            .catch((error) => console.error("Error fetching data:", error));
+        },
+
+        (error) => console.error("Error getting user location:", error)
+      );
+    }
+  };
+
+  useEffect(() => {
+    getUserLocation();
+  }, []);
+
   return (
     <>
-      <Header content={"Kamu Berada di"} />
-      <OpenStreetMap />
-      <div className="section2 border border-4 d-flex justify-content-between align-content-center mt-5">
+      {data ? (
+        <Header content={"Kamu Berada di "} city={data?.address?.city} />
+      ) : null}
+      {userLocation ? <OpenStreetMap position={userLocation} /> : null}
+      <div className="section2 d-flex justify-content-between align-content-center mt-5">
         <p className="h3">
           <strong>
             Berita Lalu Lintas Hangat di <br />
-            <em className="text-primary">Kuningan</em>
+            {data ? (
+              <em className="text-primary">{data?.address?.city}</em>
+            ) : null}
           </strong>
         </p>
 
-        <a
-          href="/news"
-          className="border text-center align-content-center m-0 text-secondary text-decoration-none"
-        >
-          Lihat semua &gt;
-        </a>
+        {data ? (
+          <Link
+            className="border text-center align-content-center m-0 text-secondary text-decoration-none"
+            legacyBehavior
+            href={{ pathname: "/news", query: { city: data?.address?.city } }}
+          >
+            <a>Lihat semua &gt;</a>
+          </Link>
+        ) : null}
       </div>
       <div className="row justify-content-around">
-        <div className="col-md-4 border">
+        <div className="col-md-4">
           <NewsCard
             title="Pembangunan Flyover Baru di Cilandak, Jalan Raya Jakarta Selatan Alami Penutupan Sementara"
             time="2025-01-10 10:10:10"
             imageUrl="https://www.shutterstock.com/shutterstock/photos/1835092750/display_1500/stock-photo-a-city-crossing-with-a-semaphore-red-and-orange-light-in-semaphore-traffic-control-and-regulation-1835092750.jpg"
           />
         </div>
-        <div className="col-md-4 border">
+        <div className="col-md-4">
           <NewsCard
             title="Pembangunan Flyover Baru di Cilandak, Jalan Raya Jakarta Selatan Alami Penutupan Sementara"
             time="2025-01-10 10:10:10"
             imageUrl="https://www.shutterstock.com/shutterstock/photos/1835092750/display_1500/stock-photo-a-city-crossing-with-a-semaphore-red-and-orange-light-in-semaphore-traffic-control-and-regulation-1835092750.jpg"
           />
         </div>
-        <div className="col-md-4 border">
+        <div className="col-md-4">
           <NewsCard
             title="Pembangunan Flyover Baru di Cilandak, Jalan Raya Jakarta Selatan Alami Penutupan Sementara"
             time="2025-01-13 08:10:10"
@@ -75,23 +110,28 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="section2 border border-4 d-flex justify-content-between align-content-center mt-5">
+      <div className="section2 d-flex justify-content-between align-content-center mt-5">
         <p className="h3">
           <strong>
             Area Parkir Terdekat di <br />
-            <em className="text-primary">Kuningan</em>
+            {data ? (
+              <em className="text-primary">{data?.address?.city}</em>
+            ) : null}
           </strong>
         </p>
 
-        <a
-          href="/park"
-          className="border text-center align-content-center m-0 text-secondary text-decoration-none"
-        >
-          Lihat semua &gt;
-        </a>
+        {data ? (
+          <Link
+            className="border text-center align-content-center m-0 text-secondary text-decoration-none"
+            legacyBehavior
+            href={{ pathname: "/park", query: { city: data?.address?.city } }}
+          >
+            <a>Lihat semua &gt;</a>
+          </Link>
+        ) : null}
       </div>
       <div className="row justify-content-around">
-        <div className="col-md-4 border">
+        <div className="col-md-4">
           <ParkCard
             isFull={false}
             type="car"
@@ -108,7 +148,7 @@ export default function Home() {
             ]}
           />
         </div>
-        <div className="col-md-4 border">
+        <div className="col-md-4">
           <ParkCard
             isFull={false}
             totalSpace="20"
@@ -124,7 +164,7 @@ export default function Home() {
             ]}
           />
         </div>
-        <div className="col-md-4 border">
+        <div className="col-md-4">
           <ParkCard
             isFull={true}
             totalSpace="20"

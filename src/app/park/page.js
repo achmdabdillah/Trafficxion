@@ -1,4 +1,4 @@
-"use client";
+// "use client";
 import React from "react";
 import { useState } from "react";
 import Header from "../Components/Header";
@@ -10,7 +10,7 @@ const TabsComponent = () => {
   const [activeTab, setActiveTab] = useState("car");
 
   return (
-    <div className="my-2 border">
+    <div className="my-2">
       <ul className="nav nav-tabs mb-3 justify-content-center">
         <li className="nav-item">
           <a
@@ -56,14 +56,15 @@ const TabsComponent = () => {
   );
 };
 
-const page = () => {
+const page = ({ searchParams }) => {
+  // const { city } = await searchParams;
   return (
     <>
-      <Header content={"Area Parkir di"} />
+      <Header content={"Area Parkir di"} city={city} />
 
       <TabsComponent />
       <div className="row justify-content-start">
-        <div className="col-md-4 border">
+        <div className="col-md-4">
           <ParkCard
             isFull={false}
             type="car"
@@ -82,7 +83,7 @@ const page = () => {
             ]}
           />
         </div>
-        <div className="col-md-4 border">
+        <div className="col-md-4">
           <ParkCard
             isFull={false}
             totalSpace="20"
@@ -100,7 +101,7 @@ const page = () => {
             ]}
           />
         </div>
-        <div className="col-md-4 border">
+        <div className="col-md-4">
           <ParkCard
             isFull={true}
             totalSpace="20"
@@ -118,7 +119,7 @@ const page = () => {
             ]}
           />
         </div>
-        <div className="col-md-4 border">
+        <div className="col-md-4">
           <ParkCard
             isFull={true}
             totalSpace="20"
