@@ -1,4 +1,3 @@
-// "use client";
 import React from "react";
 import { useState } from "react";
 import Header from "../Components/Header";
@@ -56,8 +55,8 @@ const TabsComponent = () => {
   );
 };
 
-const page = ({ searchParams }) => {
-  // const { city } = await searchParams;
+const page = async ({ searchParams }) => {
+  const { city } = await searchParams;
   return (
     <>
       <Header content={"Area Parkir di"} city={city} />

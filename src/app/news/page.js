@@ -1,10 +1,9 @@
-// "use client";
 import React from "react";
 import Header from "../Components/Header";
 import NewsCard from "../Components/NewsCard";
 
-const page = ({ searchParams }) => {
-  // const { city } = await searchParams;
+const page = async ({ searchParams }) => {
+  const { city } = await searchParams;
   return (
     <>
       <Header content={"Berita di"} city={city} />
