@@ -13,6 +13,7 @@ const Page = ({ searchParams }) => {
     console.log("$$news ", news);
     const fetchParam = async () => {
       const result = await searchParams;
+      console.log("$$news2 ", result);
       setCity(result.city);
       setLocationId(result.locationId);
     };

@@ -62,6 +62,7 @@ const Page = ({ searchParams }) => {
     console.log("$$parking ", parking);
     const fetchParam = async () => {
       const result = await searchParams;
+      console.log("$$parking2 ", result);
       setCity(result.city);
       setLocationId(result.locationId);
     };
