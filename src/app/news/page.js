@@ -29,18 +29,22 @@ const Page = ({ searchParams }) => {
       </div>
 
       <div className="row justify-justify-content-start mt-5">
-        {news
-          .filter((x) => x.location_id == locationId)
-          .slice(0, 3)
-          .map((data, index) => (
-            <div key={index} className="col-md-4 mb-3">
-              <NewsCard
-                title={data.title}
-                time={data.published_at}
-                imageUrl={data.cover_url}
-              />
-            </div>
-          ))}
+        {news ? (
+          news
+            .filter((x) => x.location_id == locationId)
+            .slice(0, 3)
+            .map((data, index) => (
+              <div key={index} className="col-md-4 mb-3">
+                <NewsCard
+                  title={data.title}
+                  time={data.published_at}
+                  imageUrl={data.cover_url}
+                />
+              </div>
+            ))
+        ) : (
+          <p>loading</p>
+        )}
       </div>
     </>
   );

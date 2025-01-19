@@ -74,26 +74,30 @@ const Page = ({ searchParams }) => {
 
       <TabsComponent activeTab={activeTab} setActiveTab={setActiveTab} />
       <div className="row justify-content-start">
-        {parking
-          .filter((x) => x.location_id == locationId)
-          .filter((x) => x.type == activeTab)
-          .map((data, index) => (
-            <div className="col-md-4" key={index}>
-              <ParkCard
-                isFull={data.booked_count >= data.total_space}
-                type={data.type}
-                totalSpace={data.total_space}
-                bookedSpace={data.booked_count}
-                title={data.name}
-                openTime={data.open_time}
-                pricePerHour={data.price_per_hour}
-                closeTime={data.close_time}
-                mapsUrl={data.maps_url}
-                imageUrl={[...data.images]}
-                publicTransportData={data.public_transport_nearby[0]}
-              />
-            </div>
-          ))}
+        {parking ? (
+          parking
+            .filter((x) => x.location_id == locationId)
+            .filter((x) => x.type == activeTab)
+            .map((data, index) => (
+              <div className="col-md-4" key={index}>
+                <ParkCard
+                  isFull={data.booked_count >= data.total_space}
+                  type={data.type}
+                  totalSpace={data.total_space}
+                  bookedSpace={data.booked_count}
+                  title={data.name}
+                  openTime={data.open_time}
+                  pricePerHour={data.price_per_hour}
+                  closeTime={data.close_time}
+                  mapsUrl={data.maps_url}
+                  imageUrl={[...data.images]}
+                  publicTransportData={data.public_transport_nearby[0]}
+                />
+              </div>
+            ))
+        ) : (
+          <p>loadingg</p>
+        )}
       </div>
     </>
   );
