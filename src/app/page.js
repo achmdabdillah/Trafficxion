@@ -1,6 +1,7 @@
 "use client";
 import Image from "next/image";
 import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 import Link from "next/link";
 import dynamic from "next/dynamic";
 import location from "./data/locations.js";
@@ -18,6 +19,7 @@ export default function Home() {
   const [userLocation, setUserLocation] = useState(null);
   const [data, setData] = useState(null);
   const [locationId, setLocationId] = useState(null);
+  const router = useRouter();
 
   const getUserLocation = () => {
     if (navigator.geolocation) {
@@ -68,16 +70,17 @@ export default function Home() {
         </p>
 
         {data ? (
-          <Link
+          <button
             className="border text-center align-content-center m-0 text-secondary text-decoration-none"
-            legacyBehavior
-            href={{
-              pathname: "/news",
-              query: { city: data?.address?.city, locationId },
-            }}
+            type="button"
+            onClick={() =>
+              router.push(
+                `/news?city=${data?.address?.city}&locationId=${locationId}`
+              )
+            }
           >
-            <a>Lihat semua &gt;</a>
-          </Link>
+            Lihat semua &gt;
+          </button>
         ) : null}
       </div>
 
@@ -111,16 +114,17 @@ export default function Home() {
         </p>
 
         {data ? (
-          <Link
+          <button
             className="border text-center align-content-center m-0 text-secondary text-decoration-none"
-            legacyBehavior
-            href={{
-              pathname: "/park",
-              query: { city: data?.address?.city, locationId },
-            }}
+            type="button"
+            onClick={() =>
+              router.push(
+                `/park?city=${data?.address?.city}&locationId=${locationId}`
+              )
+            }
           >
-            <a>Lihat semua &gt;</a>
-          </Link>
+            Lihat semua &gt;
+          </button>
         ) : null}
       </div>
       <div className="row justify-content-around">
