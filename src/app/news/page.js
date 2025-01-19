@@ -1,10 +1,23 @@
 "use client";
 import React from "react";
+import { useState, useEffect } from "react";
 import Header from "../Components/Header";
 import NewsCard from "../Components/NewsCard";
+import news from "../data/news.js";
 
-const page = async ({ searchParams }) => {
-  const { city } = await searchParams;
+const Page = ({ searchParams }) => {
+  const [city, setCity] = useState(null);
+  const [locationId, setLocationId] = useState(null);
+
+  useEffect(() => {
+    const fetchParam = async () => {
+      const result = await searchParams;
+      setCity(result.city);
+      setLocationId(result.locationId);
+    };
+    fetchParam();
+  }, [searchParams]);
+
   return (
     <>
       <Header content={"Berita di"} city={city} />
@@ -15,51 +28,21 @@ const page = async ({ searchParams }) => {
       </div>
 
       <div className="row justify-justify-content-start mt-5">
-        <div className="col-md-4">
-          <NewsCard
-            title="Pembangunan Flyover Baru di Cilandak, Jalan Raya Jakarta Selatan Alami Penutupan Sementara"
-            time="2025-01-10 10:10:10"
-            imageUrl="https://www.shutterstock.com/shutterstock/photos/1835092750/display_1500/stock-photo-a-city-crossing-with-a-semaphore-red-and-orange-light-in-semaphore-traffic-control-and-regulation-1835092750.jpg"
-          />
-        </div>
-        <div className="col-md-4">
-          <NewsCard
-            title="Pembangunan Flyover Baru di Cilandak, Jalan Raya Jakarta Selatan Alami Penutupan Sementara"
-            time="2025-01-10 10:10:10"
-            imageUrl="https://www.shutterstock.com/shutterstock/photos/1835092750/display_1500/stock-photo-a-city-crossing-with-a-semaphore-red-and-orange-light-in-semaphore-traffic-control-and-regulation-1835092750.jpg"
-          />
-        </div>
-        <div className="col-md-4">
-          <NewsCard
-            title="Pembangunan Flyover Baru di Cilandak, Jalan Raya Jakarta Selatan Alami Penutupan Sementara"
-            time="2025-01-13 08:10:10"
-            imageUrl="https://www.shutterstock.com/shutterstock/photos/1835092750/display_1500/stock-photo-a-city-crossing-with-a-semaphore-red-and-orange-light-in-semaphore-traffic-control-and-regulation-1835092750.jpg"
-          />
-        </div>
-        <div className="col-md-4">
-          <NewsCard
-            title="Pembangunan Flyover Baru di Cilandak, Jalan Raya Jakarta Selatan Alami Penutupan Sementara"
-            time="2025-01-13 08:10:10"
-            imageUrl="https://www.shutterstock.com/shutterstock/photos/1835092750/display_1500/stock-photo-a-city-crossing-with-a-semaphore-red-and-orange-light-in-semaphore-traffic-control-and-regulation-1835092750.jpg"
-          />
-        </div>
-        <div className="col-md-4">
-          <NewsCard
-            title="Pembangunan Flyover Baru di Cilandak, Jalan Raya Jakarta Selatan Alami Penutupan Sementara"
-            time="2025-01-13 08:10:10"
-            imageUrl="https://www.shutterstock.com/shutterstock/photos/1835092750/display_1500/stock-photo-a-city-crossing-with-a-semaphore-red-and-orange-light-in-semaphore-traffic-control-and-regulation-1835092750.jpg"
-          />
-        </div>
-        <div className="col-md-4">
-          <NewsCard
-            title="Pembangunan Flyover Baru di Cilandak, Jalan Raya Jakarta Selatan Alami Penutupan Sementara"
-            time="2025-01-13 08:10:10"
-            imageUrl="https://www.shutterstock.com/shutterstock/photos/1835092750/display_1500/stock-photo-a-city-crossing-with-a-semaphore-red-and-orange-light-in-semaphore-traffic-control-and-regulation-1835092750.jpg"
-          />
-        </div>
+        {news
+          .filter((x) => x.location_id == locationId)
+          .slice(0, 3)
+          .map((data, index) => (
+            <div key={index} className="col-md-4 mb-3">
+              <NewsCard
+                title={data.title}
+                time={data.published_at}
+                imageUrl={data.cover_url}
+              />
+            </div>
+          ))}
       </div>
     </>
   );
 };
 
-export default page;
+export default Page;

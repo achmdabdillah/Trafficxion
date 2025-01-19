@@ -114,7 +114,7 @@ const ParkCard = ({
               </h5>
               <button
                 type="button"
-                className="close ms-auto-0 bg-white"
+                className="close ms-auto bg-white border-0"
                 onClick={handleCloseModal}
                 aria-label="Close"
               >
@@ -182,7 +182,7 @@ const ParkCard = ({
                 <div className="col-md-4 mb-3 d-flex justify-content-start align-items-center">
                   <FontAwesomeIcon className="border m-0 p-0" icon={faClock} />
                   <p className="mb-0">
-                    {openTime} / {closeTime}{" "}
+                    {openTime} - {closeTime}{" "}
                   </p>
                 </div>
                 <div className="col-md-4 mb-3 d-flex justify-content-start align-items-center">
@@ -192,7 +192,8 @@ const ParkCard = ({
                 <div className="col-md-4 mb-3 d-flex justify-content-start align-items-center">
                   <FontAwesomeIcon className="border m-0 p-0" icon={faBus} />
                   <p className="mb-0">
-                    {convertSeconds(publicTransportData.time)} ke{" "}
+                    {console.log("$$", publicTransportData)}
+                    {convertSeconds(publicTransportData.time_seconds)} ke{" "}
                     {publicTransportData.name}
                   </p>
                 </div>

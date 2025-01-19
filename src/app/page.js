@@ -3,8 +3,9 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import dynamic from "next/dynamic";
-
-// app/IconExample.js
+import location from "./data/locations.js";
+import news from "./data/news.js";
+import parking from "./data/parkings.js";
 
 import Header from "./Components/Header";
 import NewsCard from "./Components/NewsCard";
@@ -16,6 +17,7 @@ const OpenStreetMap = dynamic(() => import("./Components/OpenStreetMap"), {
 export default function Home() {
   const [userLocation, setUserLocation] = useState(null);
   const [data, setData] = useState(null);
+  const [locationId, setLocationId] = useState(null);
 
   const getUserLocation = () => {
     if (navigator.geolocation) {
@@ -41,6 +43,14 @@ export default function Home() {
     getUserLocation();
   }, []);
 
+  useEffect(() => {
+    let city = data?.address?.city || "";
+    setLocationId(
+      location.filter((x) => x.slug == city.replace(" ", "-").toLowerCase())[0]
+        ?.id
+    );
+  }, [data]);
+
   return (
     <>
       {data ? (
@@ -61,36 +71,35 @@ export default function Home() {
           <Link
             className="border text-center align-content-center m-0 text-secondary text-decoration-none"
             legacyBehavior
-            href={{ pathname: "/news", query: { city: data?.address?.city } }}
+            href={{
+              pathname: "/news",
+              query: { city: data?.address?.city, locationId },
+            }}
           >
             <a>Lihat semua &gt;</a>
           </Link>
         ) : null}
       </div>
-      <div className="row justify-content-around">
-        <div className="col-md-4">
-          <NewsCard
-            title="Pembangunan Flyover Baru di Cilandak, Jalan Raya Jakarta Selatan Alami Penutupan Sementara"
-            time="2025-01-10 10:10:10"
-            imageUrl="https://www.shutterstock.com/shutterstock/photos/1835092750/display_1500/stock-photo-a-city-crossing-with-a-semaphore-red-and-orange-light-in-semaphore-traffic-control-and-regulation-1835092750.jpg"
-          />
-        </div>
-        <div className="col-md-4">
-          <NewsCard
-            title="Pembangunan Flyover Baru di Cilandak, Jalan Raya Jakarta Selatan Alami Penutupan Sementara"
-            time="2025-01-10 10:10:10"
-            imageUrl="https://www.shutterstock.com/shutterstock/photos/1835092750/display_1500/stock-photo-a-city-crossing-with-a-semaphore-red-and-orange-light-in-semaphore-traffic-control-and-regulation-1835092750.jpg"
-          />
-        </div>
-        <div className="col-md-4">
-          <NewsCard
-            title="Pembangunan Flyover Baru di Cilandak, Jalan Raya Jakarta Selatan Alami Penutupan Sementara"
-            time="2025-01-13 08:10:10"
-            imageUrl="https://www.shutterstock.com/shutterstock/photos/1835092750/display_1500/stock-photo-a-city-crossing-with-a-semaphore-red-and-orange-light-in-semaphore-traffic-control-and-regulation-1835092750.jpg"
-          />
-        </div>
+
+      {/* News Section */}
+      <div className="row justify-content-start">
+        {locationId
+          ? news
+              .filter((x) => x.location_id == locationId)
+              .slice(0, 3)
+              .map((data, index) => (
+                <div key={index} className="col-md-4 mb-3">
+                  <NewsCard
+                    title={data.title}
+                    time={data.published_at}
+                    imageUrl={data.cover_url}
+                  />
+                </div>
+              ))
+          : null}
       </div>
 
+      {/* Parking Section */}
       <div className="section2 d-flex justify-content-between align-content-center mt-5">
         <p className="h3">
           <strong>
@@ -105,62 +114,38 @@ export default function Home() {
           <Link
             className="border text-center align-content-center m-0 text-secondary text-decoration-none"
             legacyBehavior
-            href={{ pathname: "/park", query: { city: data?.address?.city } }}
+            href={{
+              pathname: "/park",
+              query: { city: data?.address?.city, locationId },
+            }}
           >
             <a>Lihat semua &gt;</a>
           </Link>
         ) : null}
       </div>
       <div className="row justify-content-around">
-        <div className="col-md-4">
-          <ParkCard
-            isFull={false}
-            type="car"
-            totalSpace="20"
-            bookedSpace="10"
-            title="Kuningan Park Spot"
-            openTime="07.00"
-            pricePerHour="5000"
-            closeTime="22.00"
-            publicTransportData={{ name: "Transjakarta", time: 420 }}
-            mapsUrl="https://maps.app.goo.gl/PbRzyNyfCN98BBNU8"
-            imageUrl={[
-              "https://www.shutterstock.com/shutterstock/photos/1835092750/display_1500/stock-photo-a-city-crossing-with-a-semaphore-red-and-orange-light-in-semaphore-traffic-control-and-regulation-1835092750.jpg",
-            ]}
-          />
-        </div>
-        <div className="col-md-4">
-          <ParkCard
-            isFull={false}
-            totalSpace="20"
-            bookedSpace="10"
-            title="Kuningan Park Spot"
-            openTime="07.00"
-            pricePerHour="5000"
-            closeTime="22.00"
-            publicTransportData={{ name: "Transjakarta", time: 420 }}
-            mapsUrl="https://maps.app.goo.gl/PbRzyNyfCN98BBNU8"
-            imageUrl={[
-              "https://www.shutterstock.com/shutterstock/photos/1835092750/display_1500/stock-photo-a-city-crossing-with-a-semaphore-red-and-orange-light-in-semaphore-traffic-control-and-regulation-1835092750.jpg",
-            ]}
-          />
-        </div>
-        <div className="col-md-4">
-          <ParkCard
-            isFull={true}
-            totalSpace="20"
-            bookedSpace="20"
-            title="Kuningan Park Spot"
-            openTime="07.00"
-            pricePerHour="5000"
-            closeTime="22.00"
-            publicTransportData={{ name: "Transjakarta", time: 420 }}
-            mapsUrl="https://maps.app.goo.gl/PbRzyNyfCN98BBNU8"
-            imageUrl={[
-              "https://www.shutterstock.com/shutterstock/photos/1835092750/display_1500/stock-photo-a-city-crossing-with-a-semaphore-red-and-orange-light-in-semaphore-traffic-control-and-regulation-1835092750.jpg",
-            ]}
-          />
-        </div>
+        {locationId
+          ? parking
+              .filter((x) => x.location_id == locationId)
+              .slice(0, 3)
+              .map((data, index) => (
+                <div className="col-md-4" key={index}>
+                  <ParkCard
+                    isFull={data.booked_count >= data.total_space}
+                    type={data.type}
+                    totalSpace={data.total_space}
+                    bookedSpace={data.booked_count}
+                    title={data.name}
+                    openTime={data.open_time}
+                    pricePerHour={data.price_per_hour}
+                    closeTime={data.close_time}
+                    mapsUrl={data.maps_url}
+                    imageUrl={[...data.images]}
+                    publicTransportData={data.public_transport_nearby[0]}
+                  />
+                </div>
+              ))
+          : null}
       </div>
     </>
   );
