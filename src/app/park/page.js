@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import * as React from "react";
 import { useState, useEffect } from "react";
 import Header from "../Components/Header";
 import ParkCard from "../Components/ParkCard";
@@ -57,17 +57,11 @@ const Page = ({ searchParams }) => {
   const [city, setCity] = useState(null);
   const [locationId, setLocationId] = useState(null);
   const [activeTab, setActiveTab] = useState("car");
-
+  const result = React.use(searchParams);
   useEffect(() => {
-    console.log("$$parking ", parking);
-    const fetchParam = async () => {
-      const result = await searchParams;
-      console.log("$$parking2 ", result);
-      setCity(result.city);
-      setLocationId(result.locationId);
-    };
-    fetchParam();
-  }, [searchParams]);
+    setCity(result.city);
+    setLocationId(result.locationId);
+  }, [result]);
 
   return (
     <>
