@@ -18,7 +18,7 @@ const Page = ({ searchParams }) => {
 
   useEffect(() => {
     fetchParam();
-  }, [fetchParam, searchParams]);
+  });
 
   return (
     <>
