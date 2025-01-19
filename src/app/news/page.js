@@ -11,13 +11,13 @@ const Page = ({ searchParams }) => {
 
   useEffect(() => {
     console.log("$$news ", news);
-    const fetchParam = async () => {
+    (async () => {
       const result = await searchParams;
       console.log("$$news2 ", result);
       setCity(result.city);
       setLocationId(result.locationId);
-    };
-    fetchParam();
+    })();
+    // fetchParam();
   }, [searchParams]);
 
   return (
