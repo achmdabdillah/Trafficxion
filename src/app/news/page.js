@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import Header from "../Components/Header";
 import NewsCard from "../Components/NewsCard";
 import news from "../data/news.js";
@@ -9,12 +9,12 @@ const Page = ({ searchParams }) => {
   const [city, setCity] = useState(null);
   const [locationId, setLocationId] = useState(null);
 
-  const fetchParam = async () => {
+  const fetchParam = useCallback(async () => {
     const result = await searchParams;
     console.log("$$news2 ", result);
     setCity(result.city);
     setLocationId(result.locationId);
-  };
+  }, [searchParams]);
 
   useEffect(() => {
     fetchParam();
