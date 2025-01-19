@@ -10,6 +10,7 @@ const Page = ({ searchParams }) => {
   const [locationId, setLocationId] = useState(null);
 
   useEffect(() => {
+    console.log("$$news ", news);
     const fetchParam = async () => {
       const result = await searchParams;
       setCity(result.city);

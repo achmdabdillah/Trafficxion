@@ -59,6 +59,7 @@ const Page = ({ searchParams }) => {
   const [activeTab, setActiveTab] = useState("car");
 
   useEffect(() => {
+    console.log("$$parking ", parking);
     const fetchParam = async () => {
       const result = await searchParams;
       setCity(result.city);
