@@ -9,16 +9,16 @@ const Page = ({ searchParams }) => {
   const [city, setCity] = useState(null);
   const [locationId, setLocationId] = useState(null);
 
+  const fetchParam = async () => {
+    const result = await searchParams;
+    console.log("$$news2 ", result);
+    setCity(result.city);
+    setLocationId(result.locationId);
+  };
+
   useEffect(() => {
-    console.log("$$news ", news);
-    (async () => {
-      const result = await searchParams;
-      console.log("$$news2 ", result);
-      setCity(result.city);
-      setLocationId(result.locationId);
-    })();
-    // fetchParam();
-  }, [searchParams]);
+    fetchParam();
+  }, [fetchParam, searchParams]);
 
   return (
     <>
